@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'principal/css/home.css' %}">
+    <title>Homepage</title>
+</head>
+<body>
+
+    <div class="banner">
+        <div class="galeria">
+            <div class="imagem-container">
+                <img id="slide" src="{% static 'principal/img/planta0.jpg' %}" alt="Imagem">
+                <div class="titulo">
+                    <h1>Botânica</h1>
+                </div>
+                <button class="seta esquerda">&#10094;</button>
+                <button class="seta direita">&#10095;</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="conteudo">
+        <div class="box-titulo">
+            <h2>Flores e Folhagens</h2>
+        </div>
+        <h3 class="rosas">Rosas</h3>
+    </div>
+    
+    <!-- Script JS -->
+    <script>
+        const imagens = [
+            "{% static 'principal/img/planta0.jpg' %}",
+            "{% static 'principal/img/planta1.jpg' %}",
+            "{% static 'principal/img/planta2.jpg' %}",
+            "{% static 'principal/img/planta3.jpg' %}"
+        ];
+
+        let indice = 0;
+        const slide = document.getElementById('slide');
+        const btnEsquerda = document.querySelector('.seta.esquerda');
+        const btnDireita = document.querySelector('.seta.direita');
+
+        btnEsquerda.addEventListener('click', anterior);
+        btnDireita.addEventListener('click', proximo);
+
+        function trocarImagem() {
+            slide.src = imagens[indice];
+        }
+
+        function proximo() {
+            indice = (indice + 1) % imagens.length;
+            trocarImagem(imagens[indice]);
+        }
+
+        function anterior() {
+            indice = (indice - 1 + imagens.length) % imagens.length;
+            trocarImagem(imagens[indice]);
+        }
+
+        setInterval(proximo, 7000);
+    </script>
+
+</body>
+</html>
