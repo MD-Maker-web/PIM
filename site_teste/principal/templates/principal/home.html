@@ -8,60 +8,30 @@
     <title>Homepage</title>
 </head>
 <body>
+    <header>
 
-    <div class="banner">
-        <div class="galeria">
-            <div class="imagem-container">
-                <img id="slide" src="{% static 'principal/img/planta0.jpg' %}" alt="Imagem">
-                <div class="titulo">
-                    <h1>Botânica</h1>
-                </div>
-                <button class="seta esquerda">&#10094;</button>
-                <button class="seta direita">&#10095;</button>
+        <!-- ícone do menu -->
+        <div id="menu-btn" class="menu-btn">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <!-- Menu lateral -->
+        <nav class="menu-lateral" class="menu-lateral">
+            <div class="itens-superior">
+                <ul>
+                    <li><a href="#">Meus dados</a></li>
+                    <li><a href="#">Serviçoes</a></li>
+                </ul>
             </div>
-        </div>
-    </div>
-
-    <div class="conteudo">
-        <div class="box-titulo">
-            <h2>Flores e Folhagens</h2>
-        </div>
-        <h3 class="rosas">Rosas</h3>
-    </div>
-    
-    <!-- Script JS -->
-    <script>
-        const imagens = [
-            "{% static 'principal/img/planta0.jpg' %}",
-            "{% static 'principal/img/planta1.jpg' %}",
-            "{% static 'principal/img/planta2.jpg' %}",
-            "{% static 'principal/img/planta3.jpg' %}"
-        ];
-
-        let indice = 0;
-        const slide = document.getElementById('slide');
-        const btnEsquerda = document.querySelector('.seta.esquerda');
-        const btnDireita = document.querySelector('.seta.direita');
-
-        btnEsquerda.addEventListener('click', anterior);
-        btnDireita.addEventListener('click', proximo);
-
-        function trocarImagem() {
-            slide.src = imagens[indice];
-        }
-
-        function proximo() {
-            indice = (indice + 1) % imagens.length;
-            trocarImagem(imagens[indice]);
-        }
-
-        function anterior() {
-            indice = (indice - 1 + imagens.length) % imagens.length;
-            trocarImagem(imagens[indice]);
-        }
-
-        setInterval(proximo, 7000);
-    </script>
-
+            <div class="itens-inferior">
+                <ul>
+                    <li><a href="#">Ajuda</a></li>
+                    <li><a href="#">Acessibilidade</a></li>
+                    <li><a href="#">Configurações</a></li>
+                </ul>
+            </div>
+        </nav>
 </body>
 </html>

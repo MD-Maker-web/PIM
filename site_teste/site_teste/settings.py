@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'principal'
+    'principal',
+    'corsheaders'  # Electron
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+MIDDLEWARE.insert(0, 'corsheaders.middleware.CorsMiddleware')  # Electron
 
 ROOT_URLCONF = 'site_teste.urls'
 
@@ -77,6 +80,8 @@ STATICFILES_DIRS = [
 
 
 WSGI_APPLICATION = 'site_teste.wsgi.application'
+
+CORS_ALLOW_ALL_ORIGINS = TrueCORS_ALLOW_ALL_ORIGINS = True  # Electron
 
 
 # Database
