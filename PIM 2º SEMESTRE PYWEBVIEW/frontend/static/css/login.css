@@ -1,0 +1,303 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: url('../imgs/fundo-logina.jpg?v=1.1');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* LOGIN CONTAINER  */
+.login-container {
+    color: white;
+    background-color: rgba(31, 31, 31, 0.85); 
+    padding: 70px 80px; 
+    margin: 0 auto;
+    width: 90%; 
+    max-width: 600px;
+    text-align: center;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+}
+
+/* LOGO CLASSOON */
+.logo{
+    width: 450px; 
+    height: 200px;
+    margin: 0 auto 10px auto; 
+    background-image: url('../imgs/logoClassOn.png?v=1.1');
+    background-size: contain; 
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* BARRA DE SELEÇÃO */
+.portal .selecao{
+    margin: 20px;
+}
+
+.select{
+    margin: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.select .barra{
+    background-color: #752ba7;
+    border-radius: 12px;
+    width: 300px;
+    max-width: 100%;
+}
+
+.select .btns{
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+}
+
+.select .bt{
+    background-color: #752ba7;
+    border-radius: 6px;
+    border: none;
+    color: white;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.bt:hover{
+    background-color: #4b166e;
+}
+
+.bt:active{
+    background-color: #7638a0;
+}
+
+/* TÍTULO */
+.login-container h1 {
+    font-size: 40px;
+    text-shadow: 0px 0px 15px rgb(89, 21, 116);
+}
+
+/* CAMPOS */
+.login-container form input {
+    color: white;
+    display: block;
+    width: 110%;
+    margin: 0 auto 20px auto;
+    padding: 40px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(31, 31, 31, 0.85);
+}
+
+.login-container form button {
+    width: 400px;
+    padding: 14px;
+    margin-top: 50px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(114, 28, 114);
+    color: white;
+    transition: all 0.3s ease;
+} 
+
+.login-container form button:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 10px white;
+    box-shadow: 0 0 10px rgb(73, 9, 92);
+}
+
+.login-container form input,
+.login-container form button {
+    box-sizing: border-box; 
+}
+
+.campos {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.campos .input {
+    width: 100%;
+    padding: 16px 10px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgba(31, 31, 31, 0.85);
+    outline: none;
+}
+
+.campos .label {
+    position: absolute;
+    top: 16px;
+    left: 12px;
+    color: #999;
+    font-size: 16px;
+    background-color: rgba(31, 31, 31, 0.85);
+    padding: 0 4px;
+    transition: all 0.2s ease;
+    pointer-events: none;
+}
+
+.campos .input:focus + .label,
+.campos .input:valid + .label {
+    top: -8px;
+    font-size: 14px;
+}
+
+.portais{
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    gap: 20px; 
+    width: 100%;
+}
+
+.portais .h2{
+    margin-bottom: 20px;
+}
+
+.portal{
+    width: 300px;
+}
+
+/* LINK ESQUECI SENHA - CORRIGIDO */
+.link {
+    display: inline-block;
+    text-decoration: none;
+    position: relative;
+    color: white;
+    padding-bottom: 2px;
+}
+
+.link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;      
+    height: 1px; /* ⬅️ ADICIONE ESTA LINHA */
+    background: white; 
+    transform: scaleX(0); 
+    transform-origin: center;  
+    transition: transform 0.3s ease;
+}
+
+.link:hover::after {
+    transform: scaleX(1);
+}
+
+.senha-container {
+    width: 100%;
+    text-align: left; 
+    margin: 20px 0 30px;
+    margin-bottom: 15px; 
+}
+
+
+/* BOTÕES - ESPAÇAMENTO AJUSTADO */
+.links {
+    display: flex;
+    flex-direction: column; 
+    align-items: stretch;
+    gap: 10px; /* ⬅️ MENOS ESPAÇO ENTRE BOTÕES */
+    margin-top: 30px; /* ⬅️ MAIS ESPAÇO ACIMA DOS BOTÕES */
+}
+
+.links button.entrar {
+    width: 50%;        
+    margin: 0 auto;
+    display: block;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(114, 28, 114);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.links .btn {
+    display: block;        
+    width: 50%;           
+    margin: 0 auto;
+    text-align: center;
+    background-color: rgb(53, 92, 175);
+    color: white;
+    text-decoration: none;
+    padding: 15px 0;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.links a.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(30, 14, 87, 0.342);
+    text-shadow: 0 0 10px white;
+}
+
+.links a.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgb(80, 13, 143);
+    text-shadow: 0 0 10px white;
+}
+
+/* COMO ENTRAR? - TEXTO */
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; 
+}
+
+.modal-content {
+    background: #1e3a8a; 
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.close-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: white;
+    color: #1e3a8a;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.close-btn:hover {
+    background: #dce4ff;
+}

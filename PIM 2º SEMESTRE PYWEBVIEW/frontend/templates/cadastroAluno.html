@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}?v={% now 'U' %}">
+    <title>Cadastrar Aluno - ClassOn</title>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo"></div>
+
+        <h1>Cadastrar Aluno</h1>
+
+        <div class="portais">
+            <!-- Exibição de mensagens -->
+            {% if mensagem %}
+                <p style="color: {% if sucesso %}green{% else %}red{% endif %}; text-align: center; margin-bottom: 10px;">
+                    {{ mensagem }}
+                </p>
+            {% endif %}
+
+            <!-- Formulário de cadastro -->
+            <form method="POST" action="{% url 'cadastrar_aluno' %}">
+                {% csrf_token %}
+
+                <div class="campos">
+                    <input id="ra" type="text" name="ra" class="input" required>
+                    <label for="ra" class="label">RA:</label>
+                </div>
+
+                <div class="campos">
+                    <input id="nome" type="text" name="nome" class="input" required>
+                    <label for="nome" class="label">Nome Completo:</label>
+                </div>
+
+                <div class="campos">
+                    <input id="email" type="email" name="email" class="input" required>
+                    <label for="email" class="label">Email:</label>
+                </div>
+
+                <div class="campos">
+                    <input id="curso" type="text" name="curso" class="input" required>
+                    <label for="curso" class="label">Curso:</label>
+                </div>
+
+                <div class="campos">
+                    <input id="senha" type="password" name="senha" class="input" required>
+                    <label for="senha" class="label">Senha:</label>
+                </div>
+
+                <div class="links">
+                    <button class="entrar" type="submit">Cadastrar Aluno</button>
+                    <a href="/" class="btn">Voltar ao Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Animação dos campos (igual ao login)
+        document.querySelectorAll('.input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.querySelector('.label').style.top = '-8px';
+                this.parentElement.querySelector('.label').style.fontSize = '14px';
+            });
+            
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.parentElement.querySelector('.label').style.top = '16px';
+                    this.parentElement.querySelector('.label').style.fontSize = '16px';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

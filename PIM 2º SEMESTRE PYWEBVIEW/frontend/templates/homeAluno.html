@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/homeAluno.css' %}?v={% now 'U' %}">
+    <title>Secretaria - ClassOn</title>
+</head>
+<body>
+    <header class="header">
+        <!-- Menu Hamburger e Sidebar -->
+    <div class="menu-hamburger" id="menuHamburger">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="close-sidebar" id="closeSidebar">×</button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#dashboard" class="sidebar-link">
+                <span class="sidebar-icon"></span>
+                Meu Cadastro
+            </a>
+            <a href="#disciplinas" class="sidebar-link">
+                <span class="sidebar-icon"></span>
+                Agenda
+            </a>
+            <a href="#relatorios" class="sidebar-link">
+                <span class="sidebar-icon"></span>
+                Relatórios
+            </a>
+            <a href="#configuracoes" class="sidebar-link">
+                <span class="sidebar-icon">⚙️</span>
+                Configurações
+            </a>
+            <a href="#financeiro" class="sidebar-link">
+                <span class="sidebar-icon">👋</span>
+                Acessibilidade
+            </a>
+        </nav>
+    </div>
+
+       <div class="overlay" id="overlay"></div>
+       
+        </div>
+        <nav class="navbar">
+            <a href="/home/" class="nav-link active">Home</a>
+            <a href="#secretaria" class="nav-link">Secretaria</a>
+            <a href="#ead" class="nav-link">Matérias</a>
+            <a href="#biblioteca" class="nav-link">Eventos Acadêmicos</a>
+            <a href="#upload" class="nav-link">Upload</a>
+        </nav>
+        <div class="user-menu">
+            <button class="logout-btn">Sair</button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="welcome-section">
+            <img src="{% static 'imgs/logoClassOn.png' %}?v=1.1" alt="ClassOn">
+            <p>Gerencie matrículas, documentos e processos acadêmicos</p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Notas e Presença -->
+            <div class="service-card">
+                <div class="service-icon">🎓</div>
+                <h3>Notas e Presença</h3>
+                <p>Gerencie notas, presenças e faltas na chamada</p>
+                <div class="service-actions">
+                    <button class="action-btn primary">Ver Notas</button>
+                    <button class="action-btn secondary">Consultar Faltas</button>
+                </div>
+            </div>
+
+            <!-- Documentos -->
+            <div class="service-card">
+                <div class="service-icon">📄</div>
+                <h3>Documentos</h3>
+                <p>Históricos, declarações, certificados e atestados</p>
+                <div class="service-actions">
+                    <button class="action-btn primary">Emitir</button>
+                    <button class="action-btn secondary">Solicitações</button>
+                </div>
+            </div>
+
+            <!-- Financeiro -->
+            <div class="service-card">
+                <div class="service-icon">💰</div>
+                <h3>Financeiro</h3>
+                <p>Mensalidades, boletos, pagamentos e inadimplência</p>
+                <div class="service-actions">
+                    <button class="action-btn primary">Relatórios</button>
+                    <button class="action-btn secondary">Cobranças</button>
+                </div>
+            </div>
+
+            <!-- EAD -->
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>EAD</h3>
+                <p>Ambiente Virtual de Aprendizagem e cursos online</p>
+                <div class="service-actions">
+                    <button class="action-btn primary">Acessar Moodle</button>
+                    <button class="action-btn secondary">Suporte</button>
+                </div>
+            </div>
+
+            <!-- Biblioteca Online -->
+            <div class="service-card">
+                <div class="service-icon">📚</div>
+                <h3>Biblioteca Online</h3>
+                <p>Acervo digital, empréstimos e reservas de livros</p>
+                <div class="service-actions">
+                    <button class="action-btn primary">Consultar Acervo</button>
+                    <button class="action-btn secondary">Meus Empréstimos</button>
+                </div>
+            </div>
+
+            <!-- Upload de Atividades -->
+            <div class="service-card">
+                <div class="service-icon">📤</div>
+                <h3>Upload de Atividades</h3>
+                <p>Envio de trabalhos, atividades e projetos</p>
+                <div class="service-actions">
+                    <button class="action-btn primary">Enviar Arquivo</button>
+                    <button class="action-btn secondary">Minhas Atividades</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status do Sistema -->
+        <div class="status-section">
+            <h2>📊 Status do Sistema</h2>
+            <div class="status-cards">
+                <div class="status-card">
+                    <span class="status-number">1.248</span>
+                    <span class="status-label">Matrículas Ativas</span>
+                </div>
+                <div class="status-card">
+                    <span class="status-number">47</span>
+                    <span class="status-label">Documentos Pendentes</span>
+                </div>
+                <div class="status-card">
+                    <span class="status-number">12</span>
+                    <span class="status-label">Novos no EAD</span>
+                </div>
+                <div class="status-card">
+                    <span class="status-number">8</span>
+                    <span class="status-label">Uploads Hoje</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+
+        // Menu Hamburger
+        const menuHamburger = document.getElementById('menuHamburger');
+        const sidebar = document.getElementById('sidebar');
+        const closeSidebar = document.getElementById('closeSidebar');
+        const overlay = document.getElementById('overlay');
+
+        // Abrir sidebar
+        menuHamburger.addEventListener('click', function() {
+            sidebar.classList.add('open');
+            overlay.classList.add('show');
+        });
+
+        // Fechar sidebar
+        closeSidebar.addEventListener('click', function() {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('show');
+        });
+
+        // Fechar ao clicar no overlay
+        overlay.addEventListener('click', function() {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('show');
+        });
+
+        // Fechar ao clicar em um link
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if(this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    alert('Navegando para: ' + this.textContent.trim());
+                }
+                sidebar.classList.remove('open');
+                overlay.classList.remove('show');
+            });
+        });
+
+        // Navegação
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if(this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    alert('Navegando para: ' + this.textContent);
+                }
+            });
+        });
+
+        // Ações dos botões
+        document.querySelectorAll('.action-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const cardTitle = this.closest('.service-card').querySelector('h3').textContent;
+                const actionType = this.classList.contains('primary') ? 'Ação Principal' : 'Ação Secundária';
+                alert(`${actionType}: ${cardTitle}`);
+            });
+        });
+
+        // Logout
+        document.querySelector('.logout-btn').addEventListener('click', function() {
+            if(confirm('Deseja realmente sair?')) {
+                window.location.href = "/";
+            }
+        });
+    </script>
+</body>
+</html>

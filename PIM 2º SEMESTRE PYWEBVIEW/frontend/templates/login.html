@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}?v={% now 'U' %}">
+    <title>Login</title>
+</head>
+<body>
+
+    <a href="/cadastrar-aluno/" class="btn">Cadastrar Aluno</a>
+
+    <div class="login-container">
+        <div class="logo"></div>
+
+        <h1>Bem-vindo</h1>
+
+        <div class="portais">
+            <!-- Botões de tipo de usuário -->
+            <div class="select">
+                <div class="barra">
+                    <div class="btns">
+                        <button class="bt" id="aluno">Aluno</button>
+                        <button class="bt" id="prof">Professor</button>
+                        <button class="bt" id="adm">Administrador</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exibição de mensagens -->
+            {% if erro %}
+                <p style="color: red; text-align: center; margin-bottom: 10px;">{{ erro }}</p>
+            {% endif %}
+            <p id="msg" style="color: orange; text-align: center; margin-bottom: 10px;"></p>
+
+            <!-- Formulário de login -->
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+
+                <div class="campos">
+                    <input id="usuario" type="text" name="usuario" class="input" required>
+                    <label for="usuario" class="label">RA:</label>
+                </div>
+
+                <div class="campos">
+                    <input id="senha" type="password" name="senha" class="input" required>
+                    <label for="senha" class="label">Senha:</label>
+                </div>
+
+                <div class="senha-container">
+                    <a href="#" class="link">Esqueci a senha</a>
+                </div>
+
+                <div class="links">
+                    <button class="entrar" type="submit">Entrar</button>
+                    <button type="button" class="btn" id="abrirModal">Como Entrar?</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modalInfo">
+        <div class="modal-content">
+            <h3>Instruções para acessar o ClassOn</h3>
+            <p>1. Selecione o tipo de usuário acima (Aluno, Professor ou Administrador).<br><br>
+            2. Informe o número da matrícula (Aluno), o número de registro (Professor), ou o número de registro de admnistrador (ADM)<br><br>
+            3 . Por fim ao fazer o primeiro acesso, obrigatoriamente, o sistema pedirá uma nova senha.
+            </p>
+               
+            <button class="close-btn" id="fecharModal">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Script para alterar o tipo de usuário -->
+    <script>
+        const labelUsuario = document.querySelector('label[for="usuario"]');
+        const inputUsuario = document.querySelector('input[name="usuario"]');
+
+        document.getElementById('aluno').addEventListener('click', (e) => {
+            e.preventDefault();
+            labelUsuario.textContent = "RA:";
+            inputUsuario.placeholder = "";
+        });
+
+        document.getElementById('prof').addEventListener('click', (e) => {
+            e.preventDefault();
+            labelUsuario.textContent = "NR:";
+            inputUsuario.placeholder = "";
+        });
+
+        document.getElementById('adm').addEventListener('click', (e) => {
+            e.preventDefault();
+            labelUsuario.textContent = "NRA:";
+            inputUsuario.placeholder = "";
+        });
+    </script>
+
+    <!-- Script para validar campos -->
+    <!-- Script para validar campos -->
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+        const usuario = document.querySelector('input[name="usuario"]').value.trim();
+        const senha = document.querySelector('input[name="senha"]').value.trim();
+        const msg = document.getElementById('msg');
+        msg.textContent = "";
+
+        if (!usuario || !senha) {
+            event.preventDefault();
+            msg.textContent = "Preencha os campos com suas credenciais, por favor.";
+            msg.style.color = "orange";
+        }
+        // Verifica se é aluno e se o RA tem apenas números
+        else if (labelUsuario.textContent === "RA:" && !/^\d+$/.test(usuario)) {
+            event.preventDefault();
+            msg.textContent = "RA deve conter apenas números!";
+            msg.style.color = "red";
+        }
+    });
+</script>
+
+    <!-- Script para abrir e fechar o modal -->
+    <script>
+        const modal = document.getElementById('modalInfo');
+        const abrirModal = document.getElementById('abrirModal');
+        const fecharModal = document.getElementById('fecharModal');
+
+        abrirModal.addEventListener('click', () => {
+            modal.style.display = 'flex';
+        });
+
+        fecharModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
